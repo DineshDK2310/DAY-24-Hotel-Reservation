@@ -10,8 +10,5 @@ public class HotelReservationTest {
 	public void givenHotelNameShouldReturnItsHotelName() {
 		boolean result = hrTest.addHotel();
 		Assert.assertTrue(result);
-
-
 	}
-
 }

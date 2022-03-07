@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class HotelReservation {
-	int count;
+	
 	ArrayList<HotelDetails> hotel = new ArrayList<>();
+	
 	static Scanner sc = new Scanner(System.in);
 
 	public boolean addHotel() {
@@ -18,9 +19,8 @@ public class HotelReservation {
 		System.out.println("Hotel Rate: ");
 		hotelDetail.setRates(sc.nextInt());
 
-		hotel.add(hotelDetail);
 		System.out.println("Hotel Added in program");
-		count++;
+
 		if(hotel.add(hotelDetail))
 			return true;
 		else
@@ -29,13 +29,16 @@ public class HotelReservation {
 
 	public void displayHotels() {
 		System.out.println("\nDifferent Hotels available");
+		
 		for (HotelDetails data : hotel)
 			System.out.println(data);
 	}
 
 	public static void main(String[] args) {
 		System.out.println("Welcome to Hotel Reservation Program");
+		
 		HotelReservation hr = new HotelReservation(); 
+		
 		int choice;
 		do {
 			System.out.println("You can give your choice : ");
