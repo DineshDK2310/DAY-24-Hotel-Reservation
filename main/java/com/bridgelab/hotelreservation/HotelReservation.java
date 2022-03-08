@@ -2,9 +2,8 @@ package com.bridgelab.hotelreservation;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.Scanner;
+//import java.time.temporal.ChronoUnit;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class HotelReservation {
@@ -46,13 +45,13 @@ public class HotelReservation {
 		LocalDate startDate = LocalDate.parse(startDateRange, DATE_RANGE_FORMAT);
 		LocalDate endDate = LocalDate.parse(endDateRange, DATE_RANGE_FORMAT);
 
-		int noOfDaysBetween = (int)ChronoUnit.DAYS.between(startDate, endDate);
+//		int noOfDaysBetween = (int)ChronoUnit.DAYS.between(startDate, endDate);
 
 		ArrayList<HotelResult> hotelObj = (ArrayList<HotelResult>) hotel.stream()
 				.map(hotel -> {
 					HotelResult hotelresult = new HotelResult();
 					hotelresult.setName(hotel.getHotelName());
-					hotelresult.setTotalRate(hotel.getTotalRates(noOfDaysBetween));
+					hotelresult.setTotalRate(hotel.getTotalRates(startDate, endDate));
 					return hotelresult;
 				})
 				.sorted((type1, type2) -> (int)(type1.getTotalRate() - type2.getTotalRate()))
@@ -93,7 +92,10 @@ public class HotelReservation {
 				hr.displayHotels();
 				break;
 			case 3:
-				System.out.println(hr.findCheapestHotel("10Sep2020", "11Sep2020"));
+				System.out.println("\n Hotel with cheapest rate are: ");
+//				System.out.println(hr.findCheapestHotel("10Sep2020", "11Sep2020"));
+				//UseCase4
+				System.out.println(hr.findCheapestHotel("11Sep2020", "12Sep2020"));
 				break;
 			case 4:
 				break;

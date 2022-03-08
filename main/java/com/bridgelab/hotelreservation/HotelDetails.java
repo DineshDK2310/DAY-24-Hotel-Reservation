@@ -1,5 +1,9 @@
 package com.bridgelab.hotelreservation;
 
+import java.time.LocalDate;
+import java.util.stream.Stream;
+import java.time.*;
+
 public class HotelDetails {
 	
 	private int rates;
@@ -32,11 +36,35 @@ public class HotelDetails {
         this.rates = rates;
     }
 
-	public int getTotalRates(int daysInBetween) {
-		totalRates = rates * (daysInBetween+1);
-		return totalRates;
-	}
-
+//	public int getTotalRates(int daysInBetween) {
+//		totalRates = rates * (daysInBetween+1);
+//		return totalRates;
+//	}
+    
+    //UseCase4
+    public int getTotalRates(LocalDate startDate, LocalDate endDate) {
+		int day1Rate = Stream.iterate(startDate, date -> date.plusDays(1))
+                .limit(endDate.getDayOfMonth() - startDate.getDayOfMonth() + 1)
+                .map(date -> {
+                    if (date.getDayOfWeek().equals(DayOfWeek.SATURDAY) || date.getDayOfWeek().equals(DayOfWeek.SUNDAY)) {
+                        return getWeekendsRate();
+                    }
+                    return getWeekdaysRate();
+                })
+                .reduce((total, next) -> total).get();
+		int day2Rate = Stream.iterate(endDate, date -> date.plusDays(1))
+                .limit(endDate.getDayOfMonth() - startDate.getDayOfMonth() + 1)
+                .map(date -> {
+                    if (date.getDayOfWeek().equals(DayOfWeek.SATURDAY) || date.getDayOfWeek().equals(DayOfWeek.SUNDAY)) {
+                        return getWeekendsRate();
+                    }
+                    return getWeekdaysRate();
+                })
+                .reduce((total, next) -> total).get();
+		
+		return day1Rate+day2Rate;
+	} 
+	
 	public void setTotalRates(int totalRates) {
 		this.totalRates = totalRates;
 	}
@@ -55,6 +83,5 @@ public class HotelDetails {
 
 	public void setWeekendsRate(int weekendsRate) {
 		this.weekendsRate = weekendsRate;
-	} 
-	
+	}
 }
