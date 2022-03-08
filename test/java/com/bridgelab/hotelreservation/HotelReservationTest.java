@@ -7,11 +7,11 @@ public class HotelReservationTest {
 
 	HotelReservation hrTest = new HotelReservation();
 
-//	@Test
-//	public void givenHotelNameShouldReturnItsHotelName() {
-//		boolean result = hrTest.addHotel();
-//		Assert.assertTrue(result);
-//	}
+	@Test
+	public void givenHotelNameShouldReturnItsHotelName() {
+		boolean result = hrTest.addHotel();
+		Assert.assertTrue(result);
+	}
 	
 	@Test
 	public void givenHotelInfo_shouldReturnChepestHotel(){

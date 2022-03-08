@@ -5,11 +5,15 @@ public class HotelDetails {
 	private int rates;
     private String hotelName;
     private int totalRates;
+    private int weekdaysRate;
+	private int weekendsRate;
     
     @Override
     public String toString() {
     	return "\n Hotel Name : " + hotelName +
-    			"\n Hotel Rates : " + rates;
+    			"\n Week Days Rates: " + weekdaysRate +
+    			"\n Week Ends Rates: " + weekendsRate;
+//    			"\n Hotel Rates : " + rates;
     }
     
     public String getHotelName() {
@@ -36,5 +40,21 @@ public class HotelDetails {
 	public void setTotalRates(int totalRates) {
 		this.totalRates = totalRates;
 	}
+	
+	public int getWeekdaysRate() {
+		return weekdaysRate;
+	}
+
+	public void setWeekdaysRate(int weekdaysRate) {
+		this.weekdaysRate = weekdaysRate;
+	}
+	
+	public int getWeekendsRate() {
+		return weekendsRate;
+	}
+
+	public void setWeekendsRate(int weekendsRate) {
+		this.weekendsRate = weekendsRate;
+	} 
 	
 }

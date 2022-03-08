@@ -23,9 +23,16 @@ public class HotelReservation {
 		System.out.println("Hotel name: ");
 		hotelDetail.setHotelName(sc.next());
 
-		System.out.println("Hotel Rate: ");
-		hotelDetail.setRates(sc.nextInt());
-		
+		//		System.out.println("Hotel Rate: ");
+		//		hotelDetail.setRates(sc.nextInt());
+
+		//Usecase3
+		System.out.println("Enter hotel Weekday rate: ");
+		hotelDetail.setWeekdaysRate(sc.nextInt());
+
+		System.out.println("Enter hotel Weekend rate: ");
+		hotelDetail.setWeekendsRate(sc.nextInt());
+
 		System.out.println("Hotel Added in program");
 
 		if(hotel.add(hotelDetail))
@@ -34,12 +41,13 @@ public class HotelReservation {
 			return false;
 	}
 
-	//ucecase2
+	//usecase2
 	public  ArrayList<HotelResult> findCheapestHotel(String startDateRange, String endDateRange) {
 		LocalDate startDate = LocalDate.parse(startDateRange, DATE_RANGE_FORMAT);
 		LocalDate endDate = LocalDate.parse(endDateRange, DATE_RANGE_FORMAT);
+
 		int noOfDaysBetween = (int)ChronoUnit.DAYS.between(startDate, endDate);
-		
+
 		ArrayList<HotelResult> hotelObj = (ArrayList<HotelResult>) hotel.stream()
 				.map(hotel -> {
 					HotelResult hotelresult = new HotelResult();
