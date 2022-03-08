@@ -25,6 +25,10 @@ public class HotelReservation {
 		//		System.out.println("Hotel Rate: ");
 		//		hotelDetail.setRates(sc.nextInt());
 
+		//Usecase5
+		System.out.println("Enter hotel Ratings: ");
+		hotelDetail.setHotelRating(sc.nextInt());
+		
 		//Usecase3
 		System.out.println("Enter hotel Weekday rate: ");
 		hotelDetail.setWeekdaysRate(sc.nextInt());
