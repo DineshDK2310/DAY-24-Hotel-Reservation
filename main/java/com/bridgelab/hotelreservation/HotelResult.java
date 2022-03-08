@@ -28,7 +28,5 @@ public class HotelResult {
 	public void setTotalRate(int totalRate) {
 		this.totalRate = totalRate;
 	}
-	
-	 
 
 }

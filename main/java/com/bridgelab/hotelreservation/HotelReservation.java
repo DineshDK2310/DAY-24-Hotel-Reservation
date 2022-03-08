@@ -25,7 +25,7 @@ public class HotelReservation {
 
 		System.out.println("Hotel Rate: ");
 		hotelDetail.setRates(sc.nextInt());
-
+		
 		System.out.println("Hotel Added in program");
 
 		if(hotel.add(hotelDetail))

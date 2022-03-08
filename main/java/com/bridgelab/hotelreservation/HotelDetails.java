@@ -6,7 +6,6 @@ public class HotelDetails {
     private String hotelName;
     private int totalRates;
     
-    
     @Override
     public String toString() {
     	return "\n Hotel Name : " + hotelName +
@@ -37,6 +36,5 @@ public class HotelDetails {
 	public void setTotalRates(int totalRates) {
 		this.totalRates = totalRates;
 	}
-    
-
+	
 }
