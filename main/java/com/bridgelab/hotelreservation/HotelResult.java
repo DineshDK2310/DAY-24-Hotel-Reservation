@@ -4,6 +4,7 @@ public class HotelResult {
 	
 	private String name;
 	private int totalRate;
+	private int rating;
 	
 	@Override
     public String toString() {
@@ -27,6 +28,14 @@ public class HotelResult {
 	
 	public void setTotalRate(int totalRate) {
 		this.totalRate = totalRate;
+	}
+
+	public int getRating() {
+		return rating;
+	}
+
+	public void setRating(int rating) {
+		this.rating = rating;
 	}
 
 }

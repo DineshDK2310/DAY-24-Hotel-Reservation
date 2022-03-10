@@ -22,13 +22,22 @@ public class HotelReservationTest {
 //       Assert.assertEquals(220, expected);
 //	}
 	
+//	@Test
+//	public void givenHotelInfo_shouldReturnWeekdaysWeekendsRates() {
+//		for(int i=1;i<=3;i++)
+//			 hrTest.addHotel();
+//      ArrayList<HotelResult> arr = hrTest.findCheapestHotel("11Sep2021", "12Sep2021");
+//      String expected = arr.get(0).getName();
+//      Assert.assertEquals("Lakewood", "Bridgewood" , expected);
+//		
+//	}
+	
 	@Test
-	public void givenHotelInfo_shouldReturnWeekdaysWeekendsRates() {
+	public void givenHotelInfo_shouldReturnCheapestRatingHotel() {
 		for(int i=1;i<=3;i++)
-			 hrTest.addHotel();
-      ArrayList<HotelResult> arr = hrTest.findCheapestHotel("11Sep2021", "12Sep2021");
-      String expected = arr.get(0).getName();
-      Assert.assertEquals("Lakewood", "Bridgewood" , expected);
-		
+			hrTest.addHotel();
+		ArrayList<HotelResult> arr = hrTest.findCheapestRatedHotel("11Sep2021", "12Sep2021");
+		String expected = arr.get(0).getName();
+		Assert.assertEquals("Bridgewood" , expected);
 	}
 }

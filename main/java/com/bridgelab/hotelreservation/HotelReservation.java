@@ -63,6 +63,29 @@ public class HotelReservation {
 		return (ArrayList<HotelResult>) hotelObj.stream().filter(result -> result.getTotalRate() == hotelObj.get(0).getTotalRate())
 				.collect(Collectors.toList());
 	}
+	
+	public ArrayList<HotelResult> findCheapestRatedHotel(String startDateRange, String endDateRange) {
+        LocalDate startDate = LocalDate.parse(startDateRange, DATE_RANGE_FORMAT);
+        LocalDate endDate = LocalDate.parse(endDateRange, DATE_RANGE_FORMAT);
+
+        ArrayList<HotelResult> hotelObj = (ArrayList<HotelResult>) hotel.stream()
+                .map(hotel -> {
+                	HotelResult hotelresult = new HotelResult();
+                    hotelresult.setName(hotel.getHotelName());
+                    hotelresult.setTotalRate(hotel.getTotalRates(startDate, endDate));
+                    hotelresult.setRating(hotel.getHotelRating());
+                    return hotelresult;
+                })
+                .sorted(Comparator.comparing(HotelResult::getTotalRate).thenComparing(HotelResult::getRating,
+                        Comparator.reverseOrder()))
+                .collect(Collectors.toList());
+
+        return (ArrayList<HotelResult>) hotelObj.stream()
+                .filter(result ->
+                        result.getTotalRate() == hotelObj.get(0).getTotalRate()
+                                && result.getRating() == hotelObj.get(0).getRating())
+                .collect(Collectors.toList());
+    }
 
 	public void displayHotels() {
 		System.out.println("\nDifferent Hotels available");
@@ -82,7 +105,8 @@ public class HotelReservation {
 			System.out.println("1.Add Hotels");
 			System.out.println("2.Display Hotels");
 			System.out.println("3.Cheapest Hotel");
-			System.out.println("4.Exit from Program");
+			System.out.println("4.Cheapest Ratings");
+			System.out.println("5.Exit from Program");
 			choice= sc.nextInt();
 			switch(choice) {
 			case 1: 
@@ -102,6 +126,11 @@ public class HotelReservation {
 				System.out.println(hr.findCheapestHotel("11Sep2020", "12Sep2020"));
 				break;
 			case 4:
+				//Usecase6
+				System.out.println("\n Hotel with cheapest ratings: ");
+                System.out.println(hr.findCheapestRatedHotel("11Sep2020", "12Sep2020"));
+                break;
+			case 5:
 				break;
 			}System.out.println("Want to do more operation on hotels then press 1");
 			choice = sc.nextInt();
